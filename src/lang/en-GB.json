@@ -13,7 +13,8 @@
     "youHavePicked": "You have picked",
     "previous": "Previous",
     "next": "Next",
-    "register": "Register"
+    "register": "Register",
+    "termsAndConditions": "By registering you accept our terms and conditions"
   },
   "dashboard": {
     "navbar": {

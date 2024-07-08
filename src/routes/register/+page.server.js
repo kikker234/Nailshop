@@ -1,6 +1,8 @@
 // src/routes/register/+page.server.js
 import makeApiCall from '$lib/ApiCall.js';
 import { error, fail } from '@sveltejs/kit';
+import { getLocaleFromNavigator } from 'svelte-i18n';
+import cookies from 'js-cookie';
 
 /** @type {import('./$types').PageLoad} */
 export function load({ params }) {
@@ -9,7 +11,7 @@ export function load({ params }) {
 
 /** @type {import('./$types').Actions} */
 export const actions = {
-	default: async ({ request }) => {
+	default: async ({ request, cookies }) => {
 		const data = await request.formData();
 
 		let formData = {};
@@ -17,51 +19,43 @@ export const actions = {
 			formData[key] = value;
 		}
 
-		return await makeApiCall('/api/organization', 'POST', formData)
+		return await makeApiCall('/api/organization', 'POST', formData, cookies.get('lang'))
 			.then((response) => {
-
+				return {
+					status: 200,
+					headers: {
+						'content-type': 'application/json'
+					},
+					body: JSON.stringify(response.data)
+				};
 			})
 			.catch((errorObj) => {
 				let errors = {};
 
 				for (let key in errorObj.response.data) {
-
-					console.log('Error for field: ' + key);
 					errors[key.toLowerCase()] = errorObj.response.data[key];
 				}
 
 				let form = getFormData();
-
-				// inject old values into form
-				for (let step of form.formFields) {
-					if (step.fields === undefined) continue;
-
-					for (let field of step.fields) {
-						if (formData[field.name]) {
-							field.value = formData[field.name];
-						}
-					}
-				}
-
-				// inject errors into form
-				for (let step of form.formFields) {
-					if (step.fields === undefined) continue;
-
-					for (let field of step.fields) {
-						if (errors[field.name.toLowerCase()]) {
-							field.error = errors[field.name];
-							console.log('Error for field: ' + field.name + ' - ' + field.error);
-						}
-					}
-				}
 
 				let lowestErrorStep = 0;
 				for (let step of form.formFields) {
 					if (step.fields === undefined) continue;
 
 					for (let field of step.fields) {
+						// inject old value in new form object
+						if (formData[field.name]) {
+							field.value = formData[field.name];
+						}
+
+						// inject error message in new form object
+						if (errors[field.name.toLowerCase()]) {
+							field.error = errors[field.name];
+						}
+
+						// check if this step is the lowest step with an error
 						if (field.error) {
-							if (step.step > lowestErrorStep) {
+							if (lowestErrorStep === 0 || step.step < lowestErrorStep) {
 								lowestErrorStep = step.step;
 							}
 						}
@@ -69,6 +63,7 @@ export const actions = {
 				}
 
 				return {
+					status: 400,
 					step: lowestErrorStep,
 					errors: errors,
 					formFields: form.formFields
@@ -145,5 +140,3 @@ function getFormData() {
 		]
 	};
 }
-
-/**/

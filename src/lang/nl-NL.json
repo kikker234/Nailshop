@@ -14,7 +14,8 @@
     "previous": "Vorige",
     "next": "Volgende",
     "register": "Registreren",
-    "success": "Je hebt successvol een account aangemaakt! Klik op onderstaande knop om in te loggen!"
+    "success": "Je hebt successvol een account aangemaakt! Klik op onderstaande knop om in te loggen!",
+    "termsAndConditions": "Met het registreren ga je akkoord met de algemene voorwaarden"
   },
   "dashboard": {
     "navbar": {

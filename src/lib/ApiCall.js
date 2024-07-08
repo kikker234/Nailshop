@@ -1,16 +1,8 @@
 import axios from 'axios';
 import cookies from 'js-cookie';
-import { getLocaleFromNavigator, locale } from 'svelte-i18n';
-const getLanguage = () => {
-	return getLocaleFromNavigator();
-}
 
-export default function makeApiCall(url, method, body) {
-	let token = cookies.get('flexi');
-	let lang = 'en';
-	// instance key from env
-
-	console.log(lang);
+export default function makeApiCall(url, method, body, lang) {
+	let token = cookies.get('flexi')
 
 	return axios({
 		url: 'http://localhost:5161' + url,

@@ -1,0 +1,41 @@
+{
+  "register": {
+    "title": "Registreren",
+    "organizationName": "Organisatienaam",
+    "employees": "Aantal werknemers",
+    "email": "E-mail",
+    "password": "Wachtwoord",
+    "repeatPassword": "Herhaal wachtwoord",
+    "choosePlan": "Kies een plan",
+    "planBasic": "Basis",
+    "planAdvanced": "Geavanceerd",
+    "planUnlimited": "Onbeperkt",
+    "youHavePicked": "Je hebt gekozen",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "register": "Registreren",
+    "success": "Je hebt successvol een account aangemaakt! Klik op onderstaande knop om in te loggen!"
+  },
+  "dashboard": {
+    "navbar": {
+      "dashboard": "Dashboard",
+      "customers": "Klanten",
+      "account": "Account"
+    },
+    "dashboard": {
+      "title": "Dashboard"
+    },
+    "customers": {
+      "title": "Klanten"
+    },
+    "account": {
+      "title": "Account",
+      "change_language": "Taal wijzigen"
+    }
+  },
+  "lang": {
+    "en-GB": "Engels",
+    "nl-NL": "Nederlands"
+  },
+  "error": "Er is een fout opgetreden"
+}

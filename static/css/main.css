@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+ES+Deco:wght@100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    --primary-color: #fc38ce;
+    --error-color: red;
+
+    --secondary-background-color: #efefef;
+
+    --padding: .3em;
+    --border-radius: .2em;
+
+    --medium-font-size: 1em;
+
+    --shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+
+    font-family: Roboto, Tahoma, serif;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+
+    min-height: 100vh;
+    min-width: 100vw;
+
+    background: var(--secondary-background-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-family: "Playwrite ES Deco", Tahoma, serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+form > div {
+    padding-block: var(--padding);
+}
+
+form > div:has(input[type=submit]) {
+    display: flex;
+    justify-content: center;
+}
+
+form > div > .error {
+    color: var(--error-color);
+}
+
+.form-card {
+    box-sizing: border-box;
+}
+
+.form-card.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.form-card > form {
+    width: 25%;
+    background: white;
+
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+input:not(input[type=radio]), button, select {
+    font-size: var(--medium-font-size);
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    width: 100%;
+
+    box-sizing: border-box;
+}
+
+input, select {
+    border: 1px solid #adadad;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+input[type=submit], button {
+    outline: none;
+    background: none;
+
+    border: 1px solid var(--primary-color);
+    color: white;
+    background: var(--primary-color);
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bold {
+    font-weight: bold;
+}

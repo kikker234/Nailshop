@@ -1,0 +1,40 @@
+{
+  "register": {
+    "title": "Register",
+    "organizationName": "Organization name",
+    "employees": "Number of employees",
+    "email": "Email",
+    "password": "Password",
+    "repeatPassword": "Repeat password",
+    "choosePlan": "Choose a plan",
+    "planBasic": "Basic",
+    "planAdvanced": "Advanced",
+    "planUnlimited": "Unlimited",
+    "youHavePicked": "You have picked",
+    "previous": "Previous",
+    "next": "Next",
+    "register": "Register"
+  },
+  "dashboard": {
+    "navbar": {
+      "dashboard": "Dashboard",
+      "customers": "Customers",
+      "account": "Account"
+    },
+    "dashboard": {
+      "title": "Dashboard"
+    },
+    "customers": {
+      "title": "Customers"
+    },
+    "account": {
+      "title": "Account",
+      "change_language": "Change language"
+    }
+  },
+  "lang": {
+    "en-GB": "English",
+    "nl-NL": "Dutch"
+  },
+  "error": "An error occurred"
+}

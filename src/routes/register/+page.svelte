@@ -34,7 +34,7 @@
 	const getTotalSteps = () => {
 		let form = getForm();
 
-		if(!form) return 2;
+		if (!form) return 2;
 
 		return form.length + 1;
 	};

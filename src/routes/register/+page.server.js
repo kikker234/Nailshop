@@ -33,7 +33,7 @@ export const actions = {
 				let errors = {};
 
 				for (let key in errorObj.response.data) {
-					errors[key.toLowerCase()] = errorObj.response.data[key];
+					errors[key] = errorObj.response.data[key];
 				}
 
 				let form = getFormData();
@@ -49,7 +49,7 @@ export const actions = {
 						}
 
 						// inject error message in new form object
-						if (errors[field.name.toLowerCase()]) {
+						if (errors[field.name]) {
 							field.error = errors[field.name];
 						}
 

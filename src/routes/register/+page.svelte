@@ -50,7 +50,6 @@
 			<div class="">
 				<h1>{$_('register.title')}</h1>
 
-				<!-- Progress bar -->
 				<ProgressBar current={currentStep} total={getTotalSteps()} />
 
 				<div class="steps">

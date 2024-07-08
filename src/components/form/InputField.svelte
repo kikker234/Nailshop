@@ -3,7 +3,7 @@
 	export let type = "text"
 	export let value = ""
 	export let label = "Label"
-	export let error
+	export let error = ""
 </script>
 
 <div>

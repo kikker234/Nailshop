@@ -15,9 +15,10 @@
         height: 100%;
         background-color: rgba(0, 0, 0, 0.5);
 
-        display: flex;
         justify-content: center;
         align-items: center;
+
+        transition: all 0.3s ease-in-out;
     }
 
     .modal-content {
@@ -35,26 +36,37 @@
     }
 
     .btn-bar {
-				display: flex;
-				justify-content: end;
-				padding: 1rem;
-		}
+        display: flex;
+        justify-content: end;
+        padding: 1rem;
+    }
 
-		.btn-bar > * {
-				width: 10%;
-				padding: 10px;
-		}
+    .btn-bar > * {
+        width: 10%;
+        padding: 10px;
+    }
 
+    .show {
+        display: flex;
+        animation: forwards fade-in 250ms ease-in-out;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .hide {
+				display: none;
+    }
 </style>
 
-<div id="modal" style={isOpen ? 'display: flex' : 'display: none'} on:click="{closeModal}">
+<div id="modal" class={isOpen ? 'show' : 'hide'} on:click="{closeModal}">
 	<div class="modal-content" on:click|stopPropagation>
 		<slot></slot>
-
-		<div class="btn-bar">
-			<slot name="btn-bar"></slot>
-
-			<button type="button" class="close-button" on:click="{closeModal}">Close</button>
-		</div>
 	</div>
 </div>

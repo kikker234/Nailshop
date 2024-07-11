@@ -1,8 +1,14 @@
 import axios from 'axios';
 import cookies from 'js-cookie';
 
-export default function makeApiCall(url, method, body, lang) {
-	let token = cookies.get('flexi')
+export function makeClientApiCall(url, method, body) {
+	let token = cookies.get("flexi");
+	let lang = cookies.get('lang') || 'en';
+
+	return makeApiCall(url, method, body, token, lang)
+}
+
+export default function makeApiCall(url, method, body, token, lang) {
 
 	return axios({
 		url: 'http://localhost:5161' + url,

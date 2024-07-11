@@ -1,4 +1,4 @@
-// src/routes/register/+page.server.js
+// src/routes/register/++page.server.js
 import makeApiCall from '$lib/ApiCall.js';
 import { error, fail } from '@sveltejs/kit';
 import { getLocaleFromNavigator } from 'svelte-i18n';

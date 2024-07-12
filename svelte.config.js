@@ -16,7 +16,10 @@ const config = {
 			assets: 'build',
 			fallback: 'index.html'
 		}),
-		prerender: { entries: [] }
+		prerender: { entries: [] },
+		csrf: {
+			checkOrigin: false,
+		}
 	}
 };
 

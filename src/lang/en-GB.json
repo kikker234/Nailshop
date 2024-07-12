@@ -20,7 +20,9 @@
     "navbar": {
       "dashboard": "Dashboard",
       "customers": "Customers",
-      "account": "Account"
+      "account": "Account",
+      "treatment": "Treatment",
+      "calendar": "Calendar"
     },
     "dashboard": {
       "title": "Dashboard"

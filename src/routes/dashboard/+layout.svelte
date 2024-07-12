@@ -15,8 +15,16 @@
 				{$_("dashboard.navbar.dashboard")}
 			</a></li>
 
+			<li><a class="{isSelected('/dashboard/calendar')  ? 'selected' : ''}" href="/dashboard/calendar">
+				{$_("dashboard.navbar.calendar")}
+			</a></li>
+
 			<li><a class="{isSelected('/dashboard/customers')  ? 'selected' : ''}" href="/dashboard/customers">
 				{$_("dashboard.navbar.customers")}
+			</a></li>
+
+			<li><a class="{isSelected('/dashboard/treatment')  ? 'selected' : ''}" href="/dashboard/treatment">
+				{$_("dashboard.navbar.treatment")}
 			</a></li>
 
 			<li><a class="{isSelected('/dashboard/account')  ? 'selected' : ''}" href="/dashboard/account">
@@ -46,6 +54,9 @@
     section {
         height: 100vh;
         flex: 1;
+
+				overflow-y: scroll;
+				overflow-x: hidden;
     }
 
     ul {

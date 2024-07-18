@@ -13,7 +13,7 @@
 				return startA - startB;
 			});
 
-			key++
+			key++;
 		}
 	}
 
@@ -32,7 +32,7 @@
 			let startDate = new Date(start);
 			let endDate = new Date(end);
 
-			if(startDate.toDateString() !== date.toDateString()) return false;
+			if (startDate.toDateString() !== date.toDateString()) return false;
 
 			const startHour = startDate.getHours();
 			const endHour = endDate.getHours();
@@ -42,13 +42,25 @@
 		});
 	}
 
+	function getFieldValue(hour: string, key: string) {
+		const task = taskAtHour(hour);
+		if (task == null) return '';
+
+		return task.customComponentFields.find((field) => field.key == key).value;
+	}
+
 	function isTitleShown(hour: string) {
 		const task = taskAtHour(hour);
 		if (task == null) return false;
 
-		const startHour = new Date(task.customComponentFields.find((field) => field.key == 'start').value).getHours();
+		const startHour = new Date(getFieldValue("start"))).getHours();
 		const currentHour = parseInt(hour.split(':')[0]);
 		return currentHour === startHour;
+	}
+
+	function getCurrentHour() {
+		const date = new Date();
+		return date.getHours();
 	}
 </script>
 
@@ -58,12 +70,17 @@
 	{#key key}
 		<div class="hours">
 			{#each hours as hour}
-				<div class="hour">
+				<div class="hour {getCurrentHour() == hour.split(':')[0] ? 'current' : ''}">
 					{#if taskAtHour(hour)}
 						<div class="task">
 							{#if isTitleShown(hour)}
 								<div class="task-title">{taskAtHour(hour).name}</div>
-								<div class="task-time">{taskAtHour(hour).start} - {taskAtHour(hour).end}</div>
+								<div class="task-time">
+									{new Date(getFieldValue(hour, "start")).getHours()}
+									:{new Date(getFieldValue(hour, "start")).getMinutes()}
+									-
+									{new Date(getFieldValue(hour, "end")).getHours()}:{new Date(getFieldValue(hour, "end")).getMinutes()}
+								</div>
 							{/if}
 						</div>
 					{/if}
@@ -100,21 +117,22 @@
         background-color: lightgray;
     }
 
+    .hour.current {
+        background-color: var(--secondary-color);
+    }
+
     .hour:not(:has(.task)) {
         border-top: 1px solid #a8a8a8;
         border-left: 1px solid #a8a8a8;
         border-right: 1px solid #a8a8a8;
 
-				box-sizing: border-box;
+        box-sizing: border-box;
     }
 
     .task {
         background-color: var(--primary-color);
         height: 100%;
         color: white;
-
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
     }
 
 </style>

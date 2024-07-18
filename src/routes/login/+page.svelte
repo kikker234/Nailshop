@@ -7,6 +7,8 @@
 
     onMount(() => {
         if(form !== null) {
+            console.log(form);
+            
             if(typeof form === "string") {
                 errorMessage = form;
                 return;
